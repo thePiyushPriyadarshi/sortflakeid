@@ -1,0 +1,69 @@
+{
+  "name": "sortid",
+  "version": "1.0.0",
+  "description": "Production-ready Twitter Snowflake ID generator for Node.js and TypeScript.",
+  "keywords": [
+    "snowflake",
+    "sortid",
+    "id",
+    "generator",
+    "distributed",
+    "unique-id",
+    "twitter-snowflake",
+    "typescript"
+  ],
+  "homepage": "https://github.com/your-username/sortid",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/sortid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/sortid/issues"
+  },
+  "license": "MIT",
+  "author": "Piyush Priyadarshi",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "dev": "tsx watch examples/basic.ts",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "prepare": "npm run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "peerDependencies": {
+    "ioredis": "^5.4.1"
+  },
+  "peerDependenciesMeta": {
+    "ioredis": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.5.0",
+    "tsup": "^8.3.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

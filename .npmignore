@@ -1,0 +1,9 @@
+examples
+test
+src
+
+.github
+
+.vscode
+
+*.log
