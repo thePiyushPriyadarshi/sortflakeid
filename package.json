@@ -1,6 +1,6 @@
 {
   "name": "sortflakeid",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Production-ready Twitter Snowflake ID generator for Node.js and TypeScript.",
   "keywords": [
     "snowflake",
