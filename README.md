@@ -1,8 +1,8 @@
-# sortid
+# Sortflake Id
 
 **Sortable, unique IDs — like UUID, but time-ordered.**
 
-`sortid` generates 64-bit Snowflake-style IDs: unique across any number
+`sortflakeid` generates 64-bit Snowflake-style IDs: unique across any number
 of machines, with no central coordinator on the hot path, and — unlike
 a plain UUID — naturally sortable by creation time. The core generator
 has zero runtime dependencies. An optional Redis-backed allocator is

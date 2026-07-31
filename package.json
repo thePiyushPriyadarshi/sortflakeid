@@ -12,13 +12,13 @@
     "twitter-snowflake",
     "typescript"
   ],
-  "homepage": "https://github.com/your-username/sortid",
+  "homepage": "https://github.com/thePiyushPriyadarshi/sortflakeid",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-username/sortid.git"
+    "url": "git+https://github.com/thePiyushPriyadarshi/sortflake.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/sortid/issues"
+    "url": "https://github.com/thePiyushPriyadarshi/sortflakeid/issues"
   },
   "license": "MIT",
   "author": "Piyush Priyadarshi",
