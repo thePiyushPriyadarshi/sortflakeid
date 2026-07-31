@@ -10,12 +10,12 @@ included for safely running multiple instances (e.g. behind an
 autoscaler) without manually assigning IDs per machine.
 
 ```bash
-npm install sortid
+npm install sortflakeid
 ```
 
 ## Why not just use `crypto.randomUUID()`?
 
-You can, and for a lot of apps that's the right call. Reach for `sortid`
+You can, and for a lot of apps that's the right call. Reach for `sortflakeid`
 when you specifically want:
 
 - **Sort order for free** — `id2 > id1` whenever `id2` was generated
@@ -112,7 +112,7 @@ that asks.
 
 ## Built-in protection against duplicate IDs
 
-Two easy mistakes can silently cause colliding IDs, so `sortid` blocks
+Two easy mistakes can silently cause colliding IDs, so `sortflakeid` blocks
 both of them outright rather than leaving them as footguns:
 
 **Two generators, same `workerId`.** Each `SortFlakeId` keeps its
