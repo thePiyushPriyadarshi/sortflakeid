@@ -1,10 +1,10 @@
 {
-  "name": "sortid",
+  "name": "sortflakeid",
   "version": "1.0.0",
   "description": "Production-ready Twitter Snowflake ID generator for Node.js and TypeScript.",
   "keywords": [
     "snowflake",
-    "sortid",
+    "sortflakeid",
     "id",
     "generator",
     "distributed",

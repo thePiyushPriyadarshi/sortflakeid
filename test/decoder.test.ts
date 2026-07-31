@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
-  SortIdGenerator,
+  SortFlakeId,
   decode,
   timestamp,
   date,
@@ -11,7 +11,7 @@ import {
 } from "../src";
 
 describe("Decoder", () => {
-  const generator = new SortIdGenerator({
+  const generator = new SortFlakeId({
     workerId: 123,
   });
 

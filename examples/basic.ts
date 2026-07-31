@@ -1,14 +1,14 @@
 import {
-  SortIdGenerator,
+  SortFlakeId,
   decode,
   timestamp,
   date,
   workerId,
   sequence,
   isValid,
-} from "sortid";
+} from "sortflakeid";
 
-const generator = new SortIdGenerator({
+const generator = new SortFlakeId({
   workerId: 1,
 });
 

@@ -21,7 +21,7 @@ export abstract class SortIdError extends Error {
 export class DuplicateWorkerIdError extends SortIdError {
   constructor(workerId: number) {
     super(
-      `Worker ID ${workerId} is already in use by another SortIdGenerator ` +
+      `Worker ID ${workerId} is already in use by another SortFlakeId ` +
         `in this process.\n\n` +
         `Each generator maintains its own sequence counter, so creating ` +
         `multiple generators with the same worker ID would eventually ` +
@@ -51,7 +51,7 @@ export class ClockRollbackError extends SortIdError {
 export class GeneratorDestroyedError extends SortIdError {
   constructor(workerId: number) {
     super(
-      `SortIdGenerator(workerId=${workerId}) has already been destroyed.\n\n` +
+      `SortFlakeId(workerId=${workerId}) has already been destroyed.\n\n` +
         `Create a new generator before requesting more IDs.`,
     );
   }

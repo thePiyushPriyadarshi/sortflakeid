@@ -1,11 +1,11 @@
-import { SortIdGenerator, decode } from "sortid";
+import { SortFlakeId, decode } from "sortflakeid";
 
 const WORKERS = 8;
 const IDS_PER_WORKER = 250_000;
 
 const generators = Array.from(
   { length: WORKERS },
-  (_, i) => new SortIdGenerator({ workerId: i }),
+  (_, i) => new SortFlakeId({ workerId: i }),
 );
 
 const globalIds = new Set<string>();

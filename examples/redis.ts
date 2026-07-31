@@ -1,7 +1,7 @@
 import {
   RedisWorkerIdAllocator,
-  SortIdGenerator,
-} from "sortid";
+  SortFlakeId,
+} from "sortflakeid";
 
 async function main() {
   const allocator = new RedisWorkerIdAllocator({
@@ -12,7 +12,7 @@ async function main() {
 
   console.log("Allocated worker:", workerId);
 
-  const generator = new SortIdGenerator({
+  const generator = new SortFlakeId({
     workerId,
   });
 

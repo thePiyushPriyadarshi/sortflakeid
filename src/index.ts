@@ -1,4 +1,4 @@
-export { SortIdGenerator } from "./generator";
+export { SortFlakeId } from "./generator";
 
 export {
   decode,

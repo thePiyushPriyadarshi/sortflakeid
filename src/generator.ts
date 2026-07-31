@@ -25,7 +25,7 @@ import type { DecodedSortId, SortIdOptions } from "./types";
  */
 const activeWorkerIds = new Set<number>();
 
-export class SortIdGenerator {
+export class SortFlakeId {
   private readonly workerId: bigint;
   private readonly workerIdNumber: number;
   private readonly epoch: number;

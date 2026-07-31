@@ -1,11 +1,11 @@
 import { performance } from "node:perf_hooks";
 import { memoryUsage } from "node:process";
-import { SortIdGenerator, decode } from "sortid";
+import { SortFlakeId, decode } from "sortflakeid";
 
 const TOTAL = 1_000_000;
 const WORKER_ID = 1;
 
-const generator = new SortIdGenerator({
+const generator = new SortFlakeId({
   workerId: WORKER_ID,
 });
 

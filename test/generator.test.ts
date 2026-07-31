@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 
-import { SortIdGenerator, decode } from "../src";
+import { SortFlakeId, decode } from "../src";
 
-describe("SortIdGenerator", () => {
+describe("SortFlakeId", () => {
   it("generates unique ids", () => {
-    const generator = new SortIdGenerator({
+    const generator = new SortFlakeId({
       workerId: 1,
     });
 
@@ -20,7 +20,7 @@ describe("SortIdGenerator", () => {
   });
 
   it("generates increasing ids", () => {
-    const generator = new SortIdGenerator({
+    const generator = new SortFlakeId({
       workerId: 1,
     });
 
@@ -33,7 +33,7 @@ describe("SortIdGenerator", () => {
   });
 
   it("encodes worker id correctly", () => {
-    const generator = new SortIdGenerator({
+    const generator = new SortFlakeId({
       workerId: 55,
     });
 
@@ -45,7 +45,7 @@ describe("SortIdGenerator", () => {
   });
 
   it("supports nextBigInt()", () => {
-    const generator = new SortIdGenerator({
+    const generator = new SortFlakeId({
       workerId: 1,
     });
 
@@ -57,12 +57,12 @@ describe("SortIdGenerator", () => {
   });
 
   it("throws for duplicate worker ids", () => {
-    const first = new SortIdGenerator({
+    const first = new SortFlakeId({
       workerId: 1,
     });
 
     expect(() => {
-      new SortIdGenerator({
+      new SortFlakeId({
         workerId: 1,
       });
     }).toThrow();
@@ -71,7 +71,7 @@ describe("SortIdGenerator", () => {
   });
 
   it("throws after destroy()", () => {
-    const generator = new SortIdGenerator({
+    const generator = new SortFlakeId({
       workerId: 2,
     });
 
@@ -83,7 +83,7 @@ describe("SortIdGenerator", () => {
   it("supports custom epoch", () => {
     const epoch = Date.UTC(2020, 0, 1);
 
-    const generator = new SortIdGenerator({
+    const generator = new SortFlakeId({
       workerId: 1,
       epoch,
     });

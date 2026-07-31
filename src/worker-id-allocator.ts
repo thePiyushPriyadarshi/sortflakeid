@@ -48,7 +48,7 @@ export class RedisWorkerIdAllocator {
       options.heartbeatIntervalMs ?? 10_000;
 
     this.namespace =
-      options.namespace ?? "sortid";
+      options.namespace ?? "sortflakeid";
 
     this.leaseInfo = {
       workerId: -1,

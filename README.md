@@ -34,9 +34,9 @@ have to.
 ## Quick start — single instance
 
 ```ts
-import { SnowflakeGenerator } from "sortid";
+import { SortFlakeId } from "sortflakeid";
 
-const generator = new SnowflakeGenerator({
+const generator = new SortFlakeId({
   workerId: 1,           // 0–1023, unique per running instance
   epoch: 1704067200000,  // custom epoch, ms since Unix epoch
 });
@@ -65,14 +65,14 @@ npm install ioredis   # only needed if you use WorkerIdAllocator
 ```
 
 ```ts
-import { SnowflakeGenerator, WorkerIdAllocator } from "sortid";
+import { SortFlakeId, WorkerIdAllocator } from "sortflakeid";
 
 const allocator = new WorkerIdAllocator({
   redisUrl: process.env.REDIS_URL!,
 });
 
 const workerId = await allocator.acquire();
-const generator = new SnowflakeGenerator({ workerId, epoch: 1704067200000 });
+const generator = new SortFlakeId({ workerId, epoch: 1704067200000 });
 
 // ... use generator.nextId() for the lifetime of the process ...
 
@@ -115,7 +115,7 @@ that asks.
 Two easy mistakes can silently cause colliding IDs, so `sortid` blocks
 both of them outright rather than leaving them as footguns:
 
-**Two generators, same `workerId`.** Each `SnowflakeGenerator` keeps its
+**Two generators, same `workerId`.** Each `SortFlakeId` keeps its
 own private sequence counter. Two instances sharing a `workerId` can
 each independently compute the same `(timestamp, workerId, sequence)`
 combination — an actual collision. Constructing a second generator for
@@ -123,10 +123,10 @@ a `workerId` that's already active in the process throws
 `DuplicateWorkerIdError`.
 
 **More than one generator per process.** The correct pattern is one
-`SnowflakeGenerator`, constructed once, reused everywhere in your app.
+`SortFlakeId`, constructed once, reused everywhere in your app.
 By default, constructing a second one — even with a *different*
 `workerId` — throws `MultipleGeneratorInstancesError`, since this is
-almost always an accidental `new SnowflakeGenerator(...)` instead of
+almost always an accidental `new SortFlakeId(...)` instead of
 reusing the existing instance. Pass `allowMultipleInstances: true` if
 you have a deliberate reason to run more than one.
 
@@ -138,17 +138,17 @@ This matters because each extra lease consumes a slot from your worker
 ID pool for what's logically one machine.
 
 ```ts
-const genA = new SnowflakeGenerator({ workerId: 5, epoch: EPOCH });
-new SnowflakeGenerator({ workerId: 5, epoch: EPOCH }); // throws DuplicateWorkerIdError
-new SnowflakeGenerator({ workerId: 6, epoch: EPOCH }); // throws MultipleGeneratorInstancesError
+const genA = new SortFlakeId({ workerId: 5, epoch: EPOCH });
+new SortFlakeId({ workerId: 5, epoch: EPOCH }); // throws DuplicateWorkerIdError
+new SortFlakeId({ workerId: 6, epoch: EPOCH }); // throws MultipleGeneratorInstancesError
 
 genA.destroy(); // releases its slot — e.g. for test teardown
-new SnowflakeGenerator({ workerId: 6, epoch: EPOCH }); // now fine
+new SortFlakeId({ workerId: 6, epoch: EPOCH }); // now fine
 ```
 
 ## API reference
 
-### `new SnowflakeGenerator(options)`
+### `new SortFlakeId(options)`
 
 | Option | Type | Description |
 |---|---|---|
