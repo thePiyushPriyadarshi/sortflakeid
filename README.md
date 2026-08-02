@@ -41,7 +41,7 @@ const generator = new SortFlakeId({
   epoch: 1704067200000,  // custom epoch, ms since Unix epoch
 });
 
-const id = generator.nextId();
+const id = generator.next();
 console.log(id); // "7123456789012345600"
 
 console.log(generator.decode(id));
@@ -74,7 +74,7 @@ const allocator = new WorkerIdAllocator({
 const workerId = await allocator.acquire();
 const generator = new SortFlakeId({ workerId, epoch: 1704067200000 });
 
-// ... use generator.nextId() for the lifetime of the process ...
+// ... use generator.next() for the lifetime of the process ...
 
 // Release the lease immediately on a clean shutdown, instead of
 // waiting for it to expire.
@@ -156,7 +156,7 @@ new SortFlakeId({ workerId: 6, epoch: EPOCH }); // now fine
 | `epoch` | `number` | Custom epoch in ms since Unix epoch |
 | `allowMultipleInstances` | `boolean` | Opt out of the one-instance-per-process rule. Default `false`. |
 
-- `.nextId(): string` — the next unique ID (a string, since JS numbers
+- `.next(): string` — the next unique ID (a string, since JS numbers
   can't safely represent all 64-bit integers)
 - `.decode(id: string)` — `{ timestamp, workerId, sequence }` for a given ID
 - `.destroy(): void` — releases this instance's `workerId` and singleton slot
